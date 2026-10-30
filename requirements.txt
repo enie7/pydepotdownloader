@@ -1,0 +1,3 @@
+# Installs this checkout (editable) with the optional fast AES/zstd backends.
+# The dependency list itself lives in pyproject.toml.
+-e .[speed]

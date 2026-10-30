@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Download output
+depots/
+
+# Local credentials and login tokens must never be committed
+credentials.txt
+credentials.json
+account.config
