@@ -1,4 +1,5 @@
 import os
+import sys
 
 import pytest
 
@@ -42,6 +43,7 @@ def test_missing_values(write):
     assert credentials_file.load(path) == ("onlyuser", None)
 
 
+@pytest.mark.skipif(sys.platform == "win32", reason="Windows has no Unix permission bits to check")
 def test_world_readable_warning(write, capsys):
     path = write("username = a\npassword = b\n")
     os.chmod(path, 0o644)
