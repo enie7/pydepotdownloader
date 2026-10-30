@@ -10,18 +10,22 @@ standing in for SteamKit2 as the Steam protocol library.
 
 ## Installation
 
-The package isn't on PyPI yet, so install it from a checkout with pip, preferably into a virtual
-environment:
+Install from PyPI with pip, preferably into a virtual environment:
 
 ```shell
-git clone <repository-url> pydepotdownloader
-cd pydepotdownloader
-
 python3 -m venv .venv
-. .venv/bin/activate              # Windows: .venv\Scripts\activate
+. .venv/bin/activate                     # Windows: .venv\Scripts\activate
 
-pip install ".[speed]"            # installs the `depotdownloader` command
+pip install "pydepotdownloader[speed]"   # installs the `depotdownloader` command
 depotdownloader --version
+```
+
+Or from a checkout of the source:
+
+```shell
+git clone https://github.com/enie7/pydepotdownloader.git
+cd pydepotdownloader
+pip install ".[speed]"
 ```
 
 Python 3.9+ is supported. The `speed` extra pulls in `cryptography` and `zstandard`, which are
@@ -326,7 +330,7 @@ pip install -e ".[speed,dev]"
 ruff check . && ruff format --check . && pytest
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+See [CONTRIBUTING.md](https://github.com/enie7/pydepotdownloader/blob/main/CONTRIBUTING.md) for details.
 
 ## Source layout
 
@@ -355,4 +359,4 @@ SteamKit2 `Authentication` | `pydepotdownloader/steam_auth.py`
 
 ## License
 
-GPL-2.0, same as DepotDownloader, from which this is derived. See [LICENSE](LICENSE).
+GPL-2.0, same as DepotDownloader, from which this is derived. See [LICENSE](https://github.com/enie7/pydepotdownloader/blob/main/LICENSE).

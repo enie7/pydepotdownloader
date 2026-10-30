@@ -1,0 +1,53 @@
+name: Release
+
+# Publishes to PyPI when a GitHub release is published. Uses PyPI trusted publishing, so no API
+# token is stored here: pypi.org must have a (pending) publisher for this repository with workflow
+# "release.yml" and environment "pypi".
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Check the tag matches the package version
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version=$(python -c "import re; print(re.search(r'__version__ = \"(.+?)\"', open('pydepotdownloader/__init__.py').read()).group(1))")
+          if [ "${TAG#v}" != "$version" ]; then
+            echo "::error::Release tag $TAG does not match __version__ $version"
+            exit 1
+          fi
+
+      - run: pip install ".[speed,dev]" build twine
+      - run: pytest -q
+      - run: python -m build
+      - run: twine check --strict dist/*
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/pydepotdownloader/
+    permissions:
+      id-token: write # needed for trusted publishing
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

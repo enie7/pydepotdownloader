@@ -31,6 +31,12 @@ dependencies = [
     "zstandard>=0.22; python_version < '3.14'",
 ]
 
+[project.urls]
+Homepage = "https://github.com/enie7/pydepotdownloader"
+Source = "https://github.com/enie7/pydepotdownloader"
+Issues = "https://github.com/enie7/pydepotdownloader/issues"
+Changelog = "https://github.com/enie7/pydepotdownloader/releases"
+
 [project.optional-dependencies]
 # Faster AES and zstd backends. The code falls back to pycryptodome and the standard library
 # without them, but they are worth several times the chunk processing throughput.
