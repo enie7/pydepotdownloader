@@ -10,4 +10,7 @@ import steam.monkey
 
 steam.monkey.patch_minimal()
 
-__version__ = "3.4.0"
+__version__ = "0.0.1"
+
+# The SteamRE/DepotDownloader release this is a port of
+UPSTREAM_VERSION = "3.4.0"

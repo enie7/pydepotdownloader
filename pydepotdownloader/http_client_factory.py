@@ -6,9 +6,10 @@ import socket
 import requests
 import urllib3.util.connection
 
-from . import __version__
+from . import UPSTREAM_VERSION
 
-USER_AGENT = f"DepotDownloader/{__version__}"
+# Same as DepotDownloader, so the CDN sees the client it already knows
+USER_AGENT = f"DepotDownloader/{UPSTREAM_VERSION}"
 
 # This is based on the dotnet issue #44686 and its workaround at
 # https://github.com/dotnet/runtime/issues/44686#issuecomment-733797994

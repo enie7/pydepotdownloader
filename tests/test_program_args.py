@@ -40,7 +40,7 @@ def test_no_arguments_prints_usage(capsys):
 
 def test_version(capsys):
     assert program.main(["--version"]) == 0
-    assert capsys.readouterr().out.startswith("DepotDownloader v")
+    assert capsys.readouterr().out.startswith("pydepotdownloader v0.0.1 (port of DepotDownloader v3.4.0)")
 
 
 @pytest.mark.parametrize(

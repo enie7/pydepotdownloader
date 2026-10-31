@@ -6,7 +6,16 @@ import platform
 import re
 import sys
 
-from . import __version__, ansi, cdn_client, content_downloader, credentials_file, platform_utilities, util
+from . import (
+    UPSTREAM_VERSION,
+    __version__,
+    ansi,
+    cdn_client,
+    content_downloader,
+    credentials_file,
+    platform_utilities,
+    util,
+)
 from .account_settings_store import AccountSettingsStore
 from .content_downloader import ContentDownloader, ContentDownloaderException, OperationCancelledException
 from .download_config import DEFAULT_MAX_DOWNLOADS, DownloadConfig
@@ -430,7 +439,7 @@ def print_usage():
 
 
 def print_version(print_extra=False):
-    print(f"DepotDownloader v{__version__}")
+    print(f"pydepotdownloader v{__version__} (port of DepotDownloader v{UPSTREAM_VERSION})")
 
     if not print_extra:
         return
